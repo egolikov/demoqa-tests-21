@@ -43,8 +43,8 @@ public class PracticeFormTests {
         $(".react-datepicker__day--020").click();
 
         //Subjects
-        $("#subjectsContainer").click();
-        $("#subjectsContainer").setValue("E").pressEnter();
+        $("#subjectsWrapper").click();
+        $("#subjectsInput").setValue("English").pressEnter();
 
         //Hobbies
         $("#hobbiesWrapper").$(byText("Music")).click();
@@ -63,6 +63,8 @@ public class PracticeFormTests {
 
         //SubmitButton
         $("#submit").click();
+
+        sleep(1000000);
 
     }
 }
