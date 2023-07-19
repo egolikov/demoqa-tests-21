@@ -7,9 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.files.DownloadActions.click;
 
 public class PracticeFormTests {
 
@@ -18,51 +16,53 @@ public class PracticeFormTests {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
         Configuration.pageLoadStrategy = "eager";
+
     }
 
     @Test
     void formTests() {
         open("/automation-practice-form");
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
 
-        /** Main info? */
+        //FirstName, LastName, Email
         $("#firstName").setValue("Evgeniy");
         $("#lastName").setValue("Golikov");
         $("#userEmail").setValue("golikov-qa@gmail.com");
+
+        //Gender
         $("#genterWrapper").$(byText("Male")).click();
+
+        //Mobile
         $("#userNumber").setValue("9996669696");
 
-        //Календарь todo
-//        $("#dateOfBirthInput").click();
-//        $(".react-datepicker__month-select").$(byText("November")).click();
-//        $(".react-datepicker__year-select").$(byText("1993")).click();
-//        $(".react-datepicker__week").$(withText("20")).click(); this todo
+        //DateOfBirth
+        $("#dateOfBirthInput").click();
+        $(".react-datepicker__month-select").$(byText("November")).click();
+        $(".react-datepicker__year-select").$(byText("1993")).click();
+        $(".react-datepicker__day--020").click();
 
         //subjects todo
 //        $("#subjectsWrapper").click();
 //        $("#subjectsWrapper").setValue("English").pressEnter(); todo this?
 
+        //Hobbies
         $("#hobbiesWrapper").$(byText("Music")).click();
 
+        //Picture
         $("#uploadPicture").uploadFile(new File("src/test/resources/qa-dev.png"));
 
+        //CurrentAddress
         $("#currentAddress").setValue("644003  Address: Omsk city, Lenina str, 3");
 
-
-        /** State and City */
+        //StateAndCity
         $("#stateCity-wrapper #state").click();
         $("#state").$(byText("NCR")).click();
         $("#stateCity-wrapper #city").click();
         $("#city").$(byText("Noida")).click();
 
-
-        /** Submit button */
+        //SubmitButton
         $("#submit").click();
-
-
-
-
-
-
 
     }
 }
