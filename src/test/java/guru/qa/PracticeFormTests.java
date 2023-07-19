@@ -1,13 +1,14 @@
 package guru.qa;
 
-import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-
-import java.io.File;
-
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
+import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import java.io.File;
 
 public class PracticeFormTests {
 
@@ -16,12 +17,14 @@ public class PracticeFormTests {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
         Configuration.pageLoadStrategy = "eager";
-
     }
 
     @Test
     void formTests() {
+        //Open URL
         open("/automation-practice-form");
+
+        //Delete Banner, Footer
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
 
@@ -43,7 +46,6 @@ public class PracticeFormTests {
         $(".react-datepicker__day--020").click();
 
         //Subjects
-        $("#subjectsWrapper").click();
         $("#subjectsInput").setValue("English").pressEnter();
 
         //Hobbies
@@ -64,7 +66,21 @@ public class PracticeFormTests {
         //SubmitButton
         $("#submit").click();
 
-        sleep(1000000);
+        //Check Results
+        $x("//td[contains(text(), 'Student Name')]/following-sibling::td[1]").shouldHave(text("Evgeniy Golikov"));
+        $x("//td[contains(text(), 'Student Email')]/following-sibling::td[1]").shouldHave(text("golikov-qa@gmail.com"));
+        $x("//td[contains(text(), 'Gender')]/following-sibling::td[1]").shouldHave(text("Male"));
+        $x("//td[contains(text(), 'Mobile')]/following-sibling::td[1]").shouldHave(text("9996669696"));
+        $x("//td[contains(text(), 'Date of Birth')]/following-sibling::td[1]").shouldHave(text("20 November,1993"));
+        $x("//td[contains(text(), 'Subjects')]/following-sibling::td[1]").shouldHave(text("English"));
+        $x("//td[contains(text(), 'Hobbies')]/following-sibling::td[1]").shouldHave(text("Music"));
+        $x("//td[contains(text(), 'Picture')]/following-sibling::td[1]").shouldHave(text("qa-dev.png"));
+        $x("//td[contains(text(), 'Address')]/following-sibling::td[1]").shouldHave(text("644003 Address: Omsk city, Lenina str, 3"));
+        $x("//td[contains(text(), 'State and City')]/following-sibling::td[1]").shouldHave(text("NCR Noida"));
+    }
 
+    @AfterAll
+    static void afterAll() {
+        Selenide.closeWebDriver();
     }
 }
