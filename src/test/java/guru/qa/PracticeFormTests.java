@@ -42,9 +42,9 @@ public class PracticeFormTests {
         $(".react-datepicker__year-select").$(byText("1993")).click();
         $(".react-datepicker__day--020").click();
 
-        //subjects todo
-//        $("#subjectsWrapper").click();
-//        $("#subjectsWrapper").setValue("English").pressEnter(); todo this?
+        //Subjects
+        $("#subjectsContainer").click();
+        $("#subjectsContainer").setValue("E").pressEnter();
 
         //Hobbies
         $("#hobbiesWrapper").$(byText("Music")).click();
