@@ -8,7 +8,6 @@ import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import java.io.File;
 
 public class PracticeFormTests {
 
@@ -52,7 +51,7 @@ public class PracticeFormTests {
         $("#hobbiesWrapper").$(byText("Music")).click();
 
         //Picture
-        $("#uploadPicture").uploadFile(new File("src/test/resources/qa-dev.png"));
+        $("#uploadPicture").uploadFromClasspath("qa-dev.png");
 
         //CurrentAddress
         $("#currentAddress").setValue("644003  Address: Omsk city, Lenina str, 3");
