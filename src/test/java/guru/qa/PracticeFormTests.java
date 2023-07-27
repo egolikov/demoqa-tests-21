@@ -66,16 +66,16 @@ public class PracticeFormTests {
         $("#submit").click();
 
         //Check Results
-        $x("//td[contains(text(), 'Student Name')]/following-sibling::td[1]").shouldHave(text("Evgeniy Golikov"));
-        $x("//td[contains(text(), 'Student Email')]/following-sibling::td[1]").shouldHave(text("golikov-qa@gmail.com"));
-        $x("//td[contains(text(), 'Gender')]/following-sibling::td[1]").shouldHave(text("Male"));
-        $x("//td[contains(text(), 'Mobile')]/following-sibling::td[1]").shouldHave(text("9996669696"));
-        $x("//td[contains(text(), 'Date of Birth')]/following-sibling::td[1]").shouldHave(text("20 November,1993"));
-        $x("//td[contains(text(), 'Subjects')]/following-sibling::td[1]").shouldHave(text("English"));
-        $x("//td[contains(text(), 'Hobbies')]/following-sibling::td[1]").shouldHave(text("Music"));
-        $x("//td[contains(text(), 'Picture')]/following-sibling::td[1]").shouldHave(text("qa-dev.png"));
-        $x("//td[contains(text(), 'Address')]/following-sibling::td[1]").shouldHave(text("644003 Address: Omsk city, Lenina str, 3"));
-        $x("//td[contains(text(), 'State and City')]/following-sibling::td[1]").shouldHave(text("NCR Noida"));
+        $(".table-responsive").$(byText("Student Name")).parent().shouldHave(text("Evgeniy Golikov"));
+        $(".table-responsive").$(byText("Student Email")).parent().shouldHave(text("golikov-qa@gmail.com"));
+        $(".table-responsive").$(byText("Gender")).parent().shouldHave(text("Male"));
+        $(".table-responsive").$(byText("Mobile")).parent().shouldHave(text("9996669696"));
+        $(".table-responsive").$(byText("Date of Birth")).parent().shouldHave(text("20 November,1993"));
+        $(".table-responsive").$(byText("Subjects")).parent().shouldHave(text("English"));
+        $(".table-responsive").$(byText("Hobbies")).parent().shouldHave(text("Music"));
+        $(".table-responsive").$(byText("Picture")).parent().shouldHave(text("qa-dev.png"));
+        $(".table-responsive").$(byText("Address")).parent().shouldHave(text("644003 Address: Omsk city, Lenina str, 3"));
+        $(".table-responsive").$(byText("State and City")).parent().shouldHave(text("NCR Noida"));
     }
 
     @AfterAll
