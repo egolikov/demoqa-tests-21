@@ -19,25 +19,14 @@ RegistrationPage registrationPage = new RegistrationPage();
             .setLastName("Golikov")
             .setUserEmail("golikov-qa@gmail.com")
             .setGender("Male")
-            .setUserNumber("9996669696");
+            .setUserNumber("9996669696")
+            .setBirthDay("November", "1993", "20")
+            .setSubjects("English")
+            .setHobbies("Music")
+            .uploadPicture("qa-dev.png");
 
 
-        //DateOfBirth
-        $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").$(byText("November")).click();
-        $(".react-datepicker__year-select").$(byText("1993")).click();
-        $(".react-datepicker__day--020").click();
-
-        //Subjects
-        $("#subjectsInput").setValue("English").pressEnter();
-
-        //Hobbies
-        $("#hobbiesWrapper").$(byText("Music")).click();
-
-        //Picture
-        $("#uploadPicture").uploadFromClasspath("qa-dev.png");
-
-        //CurrentAddress
+//CurrentAddress
         $("#currentAddress").setValue("644003  Address: Omsk city, Lenina str, 3");
 
         //StateAndCity

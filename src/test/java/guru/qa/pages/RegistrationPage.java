@@ -1,18 +1,25 @@
 package guru.qa.pages;
 
 import com.codeborne.selenide.SelenideElement;
+import guru.qa.pages.components.calendar.CalendarComponent;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationPage {
 
+    CalendarComponent calendar = new CalendarComponent();
+
     SelenideElement
             firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
             userEmailInput = $("#userEmail"),
             genderInput = $("#genterWrapper"),
-            userNumber = $("#userNumber");
+            userNumberInput = $("#userNumber"),
+            birthDateInput = $("#dateOfBirthInput"),
+            subjectsInput = $("#subjectsInput"),
+            hobbiesInput = $("#hobbiesWrapper"),
+            pictureUpload = $("#uploadPicture");
 
 
     public RegistrationPage openPage() {
@@ -48,7 +55,32 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setUserNumber(String value) {
-        userNumber.setValue(value);
+        userNumberInput.setValue(value);
+
+        return this;
+    }
+
+    public RegistrationPage setBirthDay(String month, String year, String day) {
+        birthDateInput.click();
+        calendar.setCalendarDate(month, year, day);
+
+        return this;
+    }
+
+    public RegistrationPage setSubjects(String value) {
+        subjectsInput.setValue("English").pressEnter();
+
+        return this;
+    }
+
+    public RegistrationPage setHobbies(String value) {
+        hobbiesInput.$(byText(value)).click();
+
+        return this;
+    }
+
+    public RegistrationPage uploadPicture(String value) {
+        pictureUpload.uploadFromClasspath(value);
 
         return this;
     }
