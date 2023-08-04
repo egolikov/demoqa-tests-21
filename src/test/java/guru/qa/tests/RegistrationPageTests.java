@@ -3,7 +3,7 @@ package guru.qa.tests;
 import guru.qa.pages.RegistrationPage;
 import org.junit.jupiter.api.Test;
 
-public class PracticeFormTests extends BaseTest {
+public class RegistrationPageTests extends BaseTest {
 
 RegistrationPage registrationPage = new RegistrationPage();
 
