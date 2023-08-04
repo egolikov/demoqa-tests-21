@@ -1,42 +1,26 @@
-package guru.qa;
+package guru.qa.tests;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
-import org.junit.jupiter.api.BeforeAll;
+
+import guru.qa.pages.RegistrationPage;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.AfterAll;
 
-public class PracticeFormTests {
+public class PracticeFormTests extends BaseTest {
 
-    @BeforeAll
-    static void beforeAll() {
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = "1920x1080";
-        Configuration.pageLoadStrategy = "eager";
-    }
+RegistrationPage registrationPage = new RegistrationPage();
 
     @Test
     void formTests() {
-        //Open URL
-        open("/automation-practice-form");
 
-        //Delete Banner, Footer
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");
+        registrationPage.openPage()
+            .setFirstName("Evgeniy")
+            .setLastName("Golikov")
+            .setUserEmail("golikov-qa@gmail.com")
+            .setGender("Male")
+            .setUserNumber("9996669696");
 
-        //FirstName, LastName, Email
-        $("#firstName").setValue("Evgeniy");
-        $("#lastName").setValue("Golikov");
-        $("#userEmail").setValue("golikov-qa@gmail.com");
-
-        //Gender
-        $("#genterWrapper").$(byText("Male")).click();
-
-        //Mobile
-        $("#userNumber").setValue("9996669696");
 
         //DateOfBirth
         $("#dateOfBirthInput").click();
@@ -76,10 +60,5 @@ public class PracticeFormTests {
         $(".table-responsive").$(byText("Picture")).parent().shouldHave(text("qa-dev.png"));
         $(".table-responsive").$(byText("Address")).parent().shouldHave(text("644003 Address: Omsk city, Lenina str, 3"));
         $(".table-responsive").$(byText("State and City")).parent().shouldHave(text("NCR Noida"));
-    }
-
-    @AfterAll
-    static void afterAll() {
-        Selenide.closeWebDriver();
     }
 }
