@@ -23,20 +23,12 @@ RegistrationPage registrationPage = new RegistrationPage();
             .setBirthDay("November", "1993", "20")
             .setSubjects("English")
             .setHobbies("Music")
-            .uploadPicture("qa-dev.png");
+            .uploadPicture("qa-dev.png")
+            .setAddress("644003  Address: Omsk city, Lenina str, 3")
+            .setState("NCR")
+            .setCity("Noida")
+            .clickOnSubmitButton();
 
-
-//CurrentAddress
-        $("#currentAddress").setValue("644003  Address: Omsk city, Lenina str, 3");
-
-        //StateAndCity
-        $("#stateCity-wrapper #state").click();
-        $("#state").$(byText("NCR")).click();
-        $("#stateCity-wrapper #city").click();
-        $("#city").$(byText("Noida")).click();
-
-        //SubmitButton
-        $("#submit").click();
 
         //Check Results
         $(".table-responsive").$(byText("Student Name")).parent().shouldHave(text("Evgeniy Golikov"));

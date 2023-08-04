@@ -19,7 +19,13 @@ public class RegistrationPage {
             birthDateInput = $("#dateOfBirthInput"),
             subjectsInput = $("#subjectsInput"),
             hobbiesInput = $("#hobbiesWrapper"),
-            pictureUpload = $("#uploadPicture");
+            pictureUpload = $("#uploadPicture"),
+            addressInput = $("#currentAddress"),
+            state = $("#stateCity-wrapper #state"),
+            stateInput = $("#state"),
+            city = $("#stateCity-wrapper #city"),
+            cityInput = $("#city"),
+            submitButton = $("#submit");
 
 
     public RegistrationPage openPage() {
@@ -85,5 +91,28 @@ public class RegistrationPage {
         return this;
     }
 
+    public RegistrationPage setAddress(String value) {
+        addressInput.setValue(value);
+
+        return this;
+    }
+
+    public RegistrationPage setState(String value) {
+        state.click();
+        stateInput.$(byText(value)).click();
+
+        return this;
+    }
+
+    public RegistrationPage setCity(String value) {
+        city.click();
+        cityInput.$(byText(value)).click();
+
+        return this;
+    }
+
+    public void clickOnSubmitButton() {
+        submitButton.click();
+    }
 
 }
