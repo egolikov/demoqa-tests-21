@@ -3,6 +3,7 @@ package guru.qa.pages;
 import com.codeborne.selenide.SelenideElement;
 import guru.qa.pages.components.calendar.CalendarComponent;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -25,7 +26,8 @@ public class RegistrationPage {
             stateInput = $("#state"),
             city = $("#stateCity-wrapper #city"),
             cityInput = $("#city"),
-            submitButton = $("#submit");
+            submitButton = $("#submit"),
+            overTable = $(".table-responsive");
 
 
     public RegistrationPage openPage() {
@@ -74,7 +76,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setSubjects(String value) {
-        subjectsInput.setValue("English").pressEnter();
+        subjectsInput.setValue(value).pressEnter();
 
         return this;
     }
@@ -113,6 +115,12 @@ public class RegistrationPage {
 
     public void clickOnSubmitButton() {
         submitButton.click();
+    }
+
+    public RegistrationPage checkOverResults(String value, String valueCheck) {
+        overTable.$(byText(value)).parent().shouldHave(text(valueCheck));
+
+        return this;
     }
 
 }

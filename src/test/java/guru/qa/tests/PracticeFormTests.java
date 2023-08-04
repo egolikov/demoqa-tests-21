@@ -1,9 +1,5 @@
 package guru.qa.tests;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
-
 import guru.qa.pages.RegistrationPage;
 import org.junit.jupiter.api.Test;
 
@@ -29,17 +25,16 @@ RegistrationPage registrationPage = new RegistrationPage();
             .setCity("Noida")
             .clickOnSubmitButton();
 
+        registrationPage.checkOverResults("Student Name", "Evgeniy Golikov")
+            .checkOverResults("Student Email", "golikov-qa@gmail.com")
+            .checkOverResults("Gender", "Male")
+            .checkOverResults("Mobile", "9996669696")
+            .checkOverResults("Date of Birth", "20 November,1993")
+            .checkOverResults("Subjects", "English")
+            .checkOverResults("Hobbies", "Music")
+            .checkOverResults("Picture", "qa-dev.png")
+            .checkOverResults("Address", "644003 Address: Omsk city, Lenina str, 3")
+            .checkOverResults("State and City", "NCR Noida");
 
-        //Check Results
-        $(".table-responsive").$(byText("Student Name")).parent().shouldHave(text("Evgeniy Golikov"));
-        $(".table-responsive").$(byText("Student Email")).parent().shouldHave(text("golikov-qa@gmail.com"));
-        $(".table-responsive").$(byText("Gender")).parent().shouldHave(text("Male"));
-        $(".table-responsive").$(byText("Mobile")).parent().shouldHave(text("9996669696"));
-        $(".table-responsive").$(byText("Date of Birth")).parent().shouldHave(text("20 November,1993"));
-        $(".table-responsive").$(byText("Subjects")).parent().shouldHave(text("English"));
-        $(".table-responsive").$(byText("Hobbies")).parent().shouldHave(text("Music"));
-        $(".table-responsive").$(byText("Picture")).parent().shouldHave(text("qa-dev.png"));
-        $(".table-responsive").$(byText("Address")).parent().shouldHave(text("644003 Address: Omsk city, Lenina str, 3"));
-        $(".table-responsive").$(byText("State and City")).parent().shouldHave(text("NCR Noida"));
     }
 }
