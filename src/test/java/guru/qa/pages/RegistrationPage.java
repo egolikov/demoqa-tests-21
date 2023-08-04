@@ -8,9 +8,9 @@ import static com.codeborne.selenide.Selenide.*;
 public class RegistrationPage {
 
     SelenideElement
-            firstNameInput = $("#firstName").setValue("Evgeniy"),
-            lastNameInput = $("#lastName").setValue("Golikov"),
-            userEmailInput = $("#userEmail").setValue("golikov-qa@gmail.com"),
+            firstNameInput = $("#firstName"),
+            lastNameInput = $("#lastName"),
+            userEmailInput = $("#userEmail"),
             genderInput = $("#genterWrapper"),
             userNumber = $("#userNumber");
 
@@ -24,7 +24,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setFirstName(String value) {
-        firstNameInput.$(byText(value));
+        firstNameInput.setValue(value);
 
         return this;
     }
