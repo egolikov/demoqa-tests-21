@@ -11,6 +11,8 @@ RegistrationPage registrationPage = new RegistrationPage();
     void registrationTest() {
 
         registrationPage.openPage()
+                .removeFixedBanner()
+                .removeFooter()
                 .setFirstName("Evgeniy")
                 .setLastName("Golikov")
                 .setUserEmail("golikov-qa@gmail.com")

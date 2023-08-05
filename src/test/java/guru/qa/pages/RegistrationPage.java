@@ -32,7 +32,17 @@ public class RegistrationPage {
 
     public RegistrationPage openPage() {
         open("/automation-practice-form");
+
+        return this;
+    }
+
+    public RegistrationPage removeFixedBanner() {
         executeJavaScript("$('#fixedban').remove()");
+
+        return this;
+    }
+
+    public RegistrationPage removeFooter() {
         executeJavaScript("$('footer').remove()");
 
         return this;
