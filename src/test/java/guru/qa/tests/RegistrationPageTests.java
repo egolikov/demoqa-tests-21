@@ -21,24 +21,24 @@ RegistrationPage registrationPage = new RegistrationPage();
                 .setUserEmail(emailValue)
                 .setGender(genderValue)
                 .setUserNumber(phoneNumber)
-                .setBirthDay("November", "1993", "20")
-                .setSubjects("English")
-                .setHobbies("Music")
-                .uploadPicture("qa-dev.png")
-                .setAddress("644003  Address: Omsk city, Lenina str, 3")
-                .setState("NCR")
-                .setCity("Noida")
+                .setBirthDay(monthValue, yearValue, dayValue)
+                .setSubjects(subjectValue)
+                .setHobbies(hobieValue)
+                .uploadPicture(fileNameValue)
+                .setAddress(addressValue)
+                .setState(stateValue)
+                .setCity(cityValue)
                 .clickOnSubmitButton();
 
         registrationPage.checkOverResults("Student Name", firstNameValue + " " + lastNameValue)
                 .checkOverResults("Student Email", emailValue)
                 .checkOverResults("Gender", genderValue)
                 .checkOverResults("Mobile", phoneNumber)
-                .checkOverResults("Date of Birth", "20 November,1993")
-                .checkOverResults("Subjects", "English")
-                .checkOverResults("Hobbies", "Music")
-                .checkOverResults("Picture", "qa-dev.png")
-                .checkOverResults("Address", "644003 Address: Omsk city, Lenina str, 3")
-                .checkOverResults("State and City", "NCR Noida");
+                .checkOverResults("Date of Birth", dayValue + " " + monthValue + "," + yearValue)
+                .checkOverResults("Subjects", subjectValue)
+                .checkOverResults("Hobbies", hobieValue)
+                .checkOverResults("Picture", fileNameValue)
+                .checkOverResults("Address", addressValue)
+                .checkOverResults("State and City", stateValue + " " + cityValue);
     }
 }
