@@ -1,7 +1,7 @@
 package guru.qa.tests;
 
 import guru.qa.pages.TextBoxPage;
-import static guru.qa.utils.TestData.*;
+import static guru.qa.utils.TestDataProperties.*;
 
 import org.junit.jupiter.api.Test;
 

@@ -2,31 +2,11 @@ package guru.qa.utils;
 
 import com.github.javafaker.Faker;
 
-import java.util.Locale;
+import static guru.qa.utils.TestDataProperties.*;
+
 import java.util.concurrent.ThreadLocalRandom;
 
-public class TestData {
-
-    static Faker fakerEn = new Faker(new Locale("en"));
-
-    public static String firstNameValue = getRandomFirstName(),
-            lastNameValue = getRandomLastName(),
-            fullNameValue = getRandomFullName(),
-            emailValue = getRandomEmail(),
-            genderValue = getRandomGender(),
-            phoneNumber = getRandomPhoneNumber(),
-            monthValue = getRandomMonth(),
-            yearValue = getRandomYear(),
-            dayValue = getRandomDay(),
-            subjectValue = getRandomSubject(),
-            hobieValue = getRandomHobie(),
-            fileNameValue = "qa-dev.png",
-            addressValue = getRandomAddress(),
-            stateValue = getRandomState(),
-            cityValue = getRandomCity(stateValue);
-
-
-
+public class TestDataMethods {
 
     public static int getRandomInt(int min, int max) {
         return ThreadLocalRandom.current().nextInt(min, max + 1);
