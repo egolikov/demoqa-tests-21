@@ -1,6 +1,8 @@
 package guru.qa.tests;
 
 import guru.qa.pages.TextBoxPage;
+import static guru.qa.utils.TestDataProperties.*;
+
 import org.junit.jupiter.api.Test;
 
 public class TextBoxPageTest extends BaseTest {
@@ -10,15 +12,15 @@ public class TextBoxPageTest extends BaseTest {
     @Test
     void textBoxTest() {
         textBoxPage.openPage()
-                .setFullName("Golikov Evgeniy")
-                .setEmail("golikov-qa@gmail.com")
-                .setCurrentAddress("644003  Address: Omsk city, Lenina str, 3")
-                .setPermanentAddress("644003  Address: Omsk city, Lenina str, 3")
+                .setFullName(fullNameValue)
+                .setEmail(emailValue)
+                .setCurrentAddress(addressValue)
+                .setPermanentAddress(addressValue)
                 .clickOnSubmitButton();
 
-        textBoxPage.checkOverResultName("Golikov Evgeniy")
-                .checkOverResultEmail("golikov-qa@gmail.com")
-                .checkOverResultCurrentAddress("644003  Address: Omsk city, Lenina str, 3")
-                .checkOverResultPermanentAddress("644003  Address: Omsk city, Lenina str, 3");
+        textBoxPage.checkOverResultName(fullNameValue)
+                .checkOverResultEmail(emailValue)
+                .checkOverResultCurrentAddress(addressValue)
+                .checkOverResultPermanentAddress(addressValue);
     }
 }
