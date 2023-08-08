@@ -1,7 +1,10 @@
 package guru.qa.tests;
 
 import guru.qa.pages.RegistrationPage;
+import static guru.qa.utils.TestData.*;
+
 import org.junit.jupiter.api.Test;
+
 
 public class RegistrationPageTests extends BaseTest {
 
@@ -13,11 +16,11 @@ RegistrationPage registrationPage = new RegistrationPage();
         registrationPage.openPage()
                 .removeFixedBanner()
                 .removeFooter()
-                .setFirstName("Evgeniy")
-                .setLastName("Golikov")
-                .setUserEmail("golikov-qa@gmail.com")
-                .setGender("Male")
-                .setUserNumber("9996669696")
+                .setFirstName(firstNameValue)
+                .setLastName(lastNameValue)
+                .setUserEmail(emailValue)
+                .setGender(genderValue)
+                .setUserNumber(phoneNumber)
                 .setBirthDay("November", "1993", "20")
                 .setSubjects("English")
                 .setHobbies("Music")
@@ -27,10 +30,10 @@ RegistrationPage registrationPage = new RegistrationPage();
                 .setCity("Noida")
                 .clickOnSubmitButton();
 
-        registrationPage.checkOverResults("Student Name", "Evgeniy Golikov")
-                .checkOverResults("Student Email", "golikov-qa@gmail.com")
-                .checkOverResults("Gender", "Male")
-                .checkOverResults("Mobile", "9996669696")
+        registrationPage.checkOverResults("Student Name", firstNameValue + " " + lastNameValue)
+                .checkOverResults("Student Email", emailValue)
+                .checkOverResults("Gender", genderValue)
+                .checkOverResults("Mobile", phoneNumber)
                 .checkOverResults("Date of Birth", "20 November,1993")
                 .checkOverResults("Subjects", "English")
                 .checkOverResults("Hobbies", "Music")
