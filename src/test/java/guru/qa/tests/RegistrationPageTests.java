@@ -1,9 +1,12 @@
 package guru.qa.tests;
 
 import guru.qa.pages.RegistrationPage;
-import static guru.qa.utils.TestDataProperties.*;
-
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+
+import static com.codeborne.selenide.logevents.SelenideLogger.step;
+import static guru.qa.utils.TestDataProperties.*;
 
 
 public class RegistrationPageTests extends BaseTest {
@@ -11,12 +14,18 @@ public class RegistrationPageTests extends BaseTest {
 RegistrationPage registrationPage = new RegistrationPage();
 
     @Test
+    @Tag("demoQA")
+    @DisplayName("Успешная регистрация RegistrationPage")
     void registrationTest() {
 
+        step("Открыть форму", () -> {
         registrationPage.openPage()
                 .removeFixedBanner()
-                .removeFooter()
-                .setFirstName(firstNameValue)
+                .removeFooter();
+        });
+
+        step("Заполнить поля", () -> {
+        registrationPage.setFirstName(firstNameValue)
                 .setLastName(lastNameValue)
                 .setUserEmail(emailValue)
                 .setGender(genderValue)
@@ -29,7 +38,9 @@ RegistrationPage registrationPage = new RegistrationPage();
                 .setState(stateValue)
                 .setCity(cityValue)
                 .clickOnSubmitButton();
+        });
 
+        step("Проверить результат заполнения формы", () -> {
         registrationPage.checkOverResults("Student Name", firstNameValue + " " + lastNameValue)
                 .checkOverResults("Student Email", emailValue)
                 .checkOverResults("Gender", genderValue)
@@ -40,5 +51,6 @@ RegistrationPage registrationPage = new RegistrationPage();
                 .checkOverResults("Picture", fileNameValue)
                 .checkOverResults("Address", addressValue)
                 .checkOverResults("State and City", stateValue + " " + cityValue);
+        });
     }
 }
