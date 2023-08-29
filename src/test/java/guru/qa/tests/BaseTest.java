@@ -7,6 +7,7 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.Map;
@@ -14,6 +15,11 @@ import java.util.Map;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class BaseTest {
+
+    @Test
+    void systemPropertiesTest() {
+        String browser = System.getProperty("browser", "chrome");
+    }
 
     @BeforeAll
     static void beforeAll() {
