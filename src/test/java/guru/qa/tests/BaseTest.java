@@ -21,11 +21,10 @@ public class BaseTest {
         String selenoidBaseUrl = System.getProperty("selenoidBaseUrl");
         String selenoidBaseUser = System.getProperty("selenoidBaseUser");
 
-
         Configuration.browser = System.getProperty("browser", "chrome");
+        Configuration.baseUrl = System.getProperty("baseUrl");
         Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
         Configuration.browserVersion = System.getProperty("browserVersion", "100.0");
-        Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
         Configuration.remote = "https://" + selenoidBaseUser + "@" + selenoidBaseUrl + "/wd/hub";
 
