@@ -15,6 +15,7 @@ RegistrationPage registrationPage = new RegistrationPage();
 
     @Test
     @Tag("demoQA")
+    @Tag("registrationTest")
     @DisplayName("Успешная регистрация RegistrationPage")
     void registrationTest() {
 

@@ -14,6 +14,7 @@ public class TextBoxPageTest extends BaseTest {
 
     @Test
     @Tag("demoQA")
+    @Tag("textBoxTest")
     @DisplayName("Успешная регистрация TextBox")
     void textBoxTest() {
 
