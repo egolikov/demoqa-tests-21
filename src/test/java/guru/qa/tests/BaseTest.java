@@ -22,7 +22,7 @@ public class BaseTest {
         String selenoidBaseUser = System.getProperty("selenoidBaseUser");
 
         Configuration.browser = System.getProperty("browser", "chrome");
-        Configuration.baseUrl = System.getProperty("baseUrl");
+        Configuration.baseUrl = System.getProperty("baseUrl", "https://demoqa.com");
         Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
         Configuration.browserVersion = System.getProperty("browserVersion", "100.0");
         Configuration.pageLoadStrategy = "eager";
