@@ -18,15 +18,12 @@ public class BaseTest {
     @BeforeAll
     static void beforeAll() {
 
-        String selenoidBaseUrl = System.getProperty("selenoidBaseUrl");
-        String selenoidBaseUser = System.getProperty("selenoidBaseUser");
-
         Configuration.browser = System.getProperty("browser", "chrome");
         Configuration.baseUrl = System.getProperty("baseUrl", "https://demoqa.com");
         Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
         Configuration.browserVersion = System.getProperty("browserVersion", "100.0");
         Configuration.pageLoadStrategy = "eager";
-        Configuration.remote = "https://" + selenoidBaseUser + "@" + selenoidBaseUrl + "/wd/hub";
+        Configuration.remote = System.getProperty("selenoidBaseUrl", "https://user1:1234@selenoid.autotests.cloud/wd/hub");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
